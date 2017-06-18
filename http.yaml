@@ -1,0 +1,16 @@
+--- #Installing HTTPD in CentOS
+- hosts: CentOS
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - name: Install HTTPD
+    yum:
+       name: '{{  pkg  }}'
+       state: latest
+  - name: startservice
+    service:
+       name: '{{  pkg   }}'
+       state: restarted

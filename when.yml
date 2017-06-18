@@ -1,0 +1,24 @@
+--- # Test File for WHEN COndition
+- hosts: all
+  user: ansible
+  sudo: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: Install HTTPD in all Servers
+    yum: name=httpd state=latest
+    when: ansible_os_family == "RedHat"
+    notify: Start HTTPD
+  - name: Install Apache in all servers
+    apt: name=apache2 state=latest
+    when: ansible_os_family == "Debian"
+    notify: Start Appache
+  handlers:
+  - name: Start HTTPD
+    service: name=httpd state=restarted
+    register: htt
+  - debug: var=htt
+  - name: Start Appache
+    service: name=apache2 state=restarted
+    register: apa
+  - debug: var=apa
