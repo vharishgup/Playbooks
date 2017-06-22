@@ -1,0 +1,26 @@
+--- # Install Docker in all Systems
+- hosts: ubuntu
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - copy:
+      src: /etc/yum.repos.d/docker.repo
+      dest: /etc/yum.repos.d/
+      owner: root
+      group: root
+      mode: "u=rw,g=r,o=r"
+  - name: Install Docker on all Machines
+    apt:
+      name: docker
+      state: latest
+  - name: Enables Docker
+    service:
+      name: docker
+      enabled: yes
+  - name: Start Docker
+    service:
+      name: docker
+      state: restarted
+  

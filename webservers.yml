@@ -1,0 +1,9 @@
+--- # Master playbook for Webservers
+- hosts: Local
+  user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes 
+  roles:
+    - webservers
