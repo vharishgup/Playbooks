@@ -1,8 +1,8 @@
 --- # Test playbook for LOOPS..
 - hosts: local
-  user: ansible
-  become: yes
-  become_method: sudo
+  #user: ansible
+  #become: yes
+  #become_method: sudo
   connection: ssh
   gather_facts: no
   
