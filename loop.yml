@@ -1,5 +1,5 @@
 --- # Test playbook for LOOPS..
-- hosts: 127.0.0.1
+- hosts: local
   user: ansible
   become: yes
   become_method: sudo
